@@ -38,8 +38,11 @@ class Location:NSObject, CLLocationManagerDelegate {
     
     // Listen to location
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // get current location
         let currentLocation:CLLocationCoordinate2D = manager.location!.coordinate
 //        print("locations = \(currentLocation.latitude) \(currentLocation.longitude)")
+        
+        // set location to fields
         latitude = currentLocation.latitude.datatypeValue
         longtitude = currentLocation.longitude.datatypeValue
     }

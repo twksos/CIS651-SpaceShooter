@@ -8,6 +8,7 @@
 
 import UIKit
 
+// used in ScoreViewController for the cell
 class UserScoreTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatar: UIImageView!

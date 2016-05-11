@@ -14,7 +14,13 @@ class Score:NSObject {
     var name: String = "Loading Name..."
     var score: Int = 0
     
+    // start connection
+    static let dirPaths =  NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+    static let docsDir = dirPaths[0]
+    static let destPath = (docsDir as NSString).stringByAppendingPathComponent("/db.sqlite3")
+    static let db = try? Connection(destPath)
     
+    // table and fields
     static let scores = Table("scores")
     static let idField = Expression<Int64>("id")
     static let scoreField = Expression<Int>("score")
@@ -26,23 +32,15 @@ class Score:NSObject {
         self.score = score
     }
     
-    static func useDB()->Connection{
-        
-        let dirPaths =  NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
-        let docsDir = dirPaths[0]
-        let destPath = (docsDir as NSString).stringByAppendingPathComponent("/db.sqlite3")
-        
-        let db = try? Connection(destPath)
-        return db!
-    }
-    
+    // save score to db
     static func saveScore(score:Int){
         let insert = scores.insert(scoreField <- score, dateField <- "alice@mac.com")
-        try! useDB().run(insert)
+        try! db!.run(insert)
     }
     
+    // get highest score from db
     static func heighestScore()->Int{
-        let highScore = useDB().pluck(scores.select(scoreField).order(scoreField.desc))
+        let highScore = db!.pluck(scores.select(scoreField).order(scoreField.desc))
         return (highScore?.get(scoreField))!
     }
     

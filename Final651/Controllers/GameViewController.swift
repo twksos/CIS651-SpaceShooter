@@ -12,13 +12,16 @@ import SpriteKit
 class GameViewController: UIViewController {
     var level = 1
     var score = 0
+    var lastScore = 0
     var win = false
+    let scene = GameScene(fileNamed:"GameScene")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let scene = GameScene(fileNamed:"GameScene") {
+        if (scene != nil) {
 
-            scene.controller = self
+            scene!.controller = self
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -28,7 +31,7 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
+            scene!.scaleMode = .AspectFill
             
             skView.presentScene(scene)
         }
@@ -37,6 +40,7 @@ class GameViewController: UIViewController {
     func result(score:Int, win:Bool) {
         self.score = score
         self.win = win
+        if(self.win) {self.lastScore = score}
         performSegueWithIdentifier("GameResult", sender: self)
     }
     
@@ -69,7 +73,7 @@ class GameViewController: UIViewController {
         if (segue.identifier == "GameResult") {
             // pass data to next view
             let svc = segue.destinationViewController as! ResultViewController;
-            
+            svc.lastScore = lastScore
             svc.score = score
             svc.win = win
         }

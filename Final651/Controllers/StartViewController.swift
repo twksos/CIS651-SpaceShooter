@@ -38,7 +38,7 @@ class StartViewController: UIViewController, MFMailComposeViewControllerDelegate
         return true
     }
     
-    
+    // when tapped feedback
     @IBAction func sendEmailButtonTapped(sender: AnyObject) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -48,6 +48,7 @@ class StartViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    // try send email
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
@@ -60,6 +61,7 @@ class StartViewController: UIViewController, MFMailComposeViewControllerDelegate
         return mailComposerVC
     }
     
+    // show alert about cannot send
     func showSendMailErrorAlert() {
         let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
         sendMailErrorAlert.show()

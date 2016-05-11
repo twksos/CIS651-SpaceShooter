@@ -11,7 +11,11 @@ import Foundation
 
 class ResultViewController: UIViewController {
     var score = 0
+    var lastScore = 0
     var win = false
+    
+    let winImage = UIImage(named: "win.png")!
+    let loseImage = UIImage(named: "TryAgain.jpg")!
     
     @IBOutlet weak var retryOrNextLabel: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -20,11 +24,22 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // when appear
     override func viewWillAppear(animated: Bool) {
+        // save the score
         Score.saveScore(score)
+        // set high score
         scoreLabel.text = "\(score)(High Score: \(Score.heighestScore()))"
-        if(win) { retryOrNextLabel.setTitle("Next Level", forState: UIControlState.Normal) }
-        else { retryOrNextLabel.setTitle("Retry", forState: UIControlState.Normal) }
+        // set label to next level when win
+        if(win) {
+            retryOrNextLabel.setTitle("Next Level", forState: UIControlState.Normal)
+            imageView.image = winImage
+        }
+        // else set to retry
+        else {
+            retryOrNextLabel.setTitle("Retry", forState: UIControlState.Normal)
+            imageView.image = loseImage
+        }
     }
     
     override func shouldAutorotate() -> Bool {
@@ -48,16 +63,19 @@ class ResultViewController: UIViewController {
         return true
     }
     
+    // forgot change the name, go back to game view controller for next level or retry
     @IBAction func sendEmailButtonTapped(sender: AnyObject) {
         performSegueWithIdentifier("RetryOrNextLevel", sender: self)
     }
     
+    // setup data before go back to game view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "RetryOrNextLevel") {
             // pass data to next view
             let svc = segue.destinationViewController as! GameViewController;
-            svc.level += 1
-            svc.score = score
+            svc.lastScore = lastScore
+            if(!win) {svc.score = lastScore}
+            else {svc.level += 1}
             svc.win = false
         }
     }

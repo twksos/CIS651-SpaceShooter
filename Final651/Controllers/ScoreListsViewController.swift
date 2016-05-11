@@ -13,6 +13,7 @@ class ScoreListViewController: UITableViewController {
     
     var scores = [Score]()
     
+    // load nearby user scores
     func loadData(){
         let location = Location.instance
         let requestURL: NSURL = NSURL(string: "http://twksos.com/score.php?lat=\(location.latitude)&lng=\(location.longtitude)")!
@@ -71,7 +72,7 @@ class ScoreListViewController: UITableViewController {
         let cellIdentifier = "UserScoreTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UserScoreTableViewCell
         
-        // Configure the cell...
+        // configure the cell
         let score = scores[indexPath.row]
         cell.name.text = score.name
         cell.score.text = String(score.score)

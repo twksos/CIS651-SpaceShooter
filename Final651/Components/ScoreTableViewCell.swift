@@ -8,6 +8,7 @@
 
 import UIKit
 
+// used in ScoreListViewController for the cell
 class ScoreTableViewCell: UITableViewCell {
 
     @IBOutlet weak var scoreLabel: UILabel!

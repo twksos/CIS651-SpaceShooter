@@ -215,19 +215,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-6S-3Jg">
-                                <rect key="frame" x="198" y="112" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="2mQ-Dm-Qkl"/>
-                                    <constraint firstAttribute="width" constant="240" id="rfi-qB-8g8"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkD-WP-PhB">
                                 <rect key="frame" x="289" y="289" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daG-LQ-fOl">
+                                <rect key="frame" x="300" y="432" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="sendEmailButtonTapped:" destination="RfI-ed-LG1" eventType="touchUpInside" id="TVA-b9-7xn"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfC-2G-GzC">
                                 <rect key="frame" x="301" y="481" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
@@ -241,13 +241,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daG-LQ-fOl">
-                                <rect key="frame" x="300" y="432" width="37" height="30"/>
-                                <state key="normal" title="Retry"/>
-                                <connections>
-                                    <action selector="sendEmailButtonTapped:" destination="RfI-ed-LG1" eventType="touchUpInside" id="TVA-b9-7xn"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-6S-3Jg">
+                                <rect key="frame" x="180" y="136" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2mQ-Dm-Qkl"/>
+                                    <constraint firstAttribute="width" constant="240" id="3rd-Oi-lhH"/>
+                                    <constraint firstAttribute="width" constant="240" id="rfi-qB-8g8"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="rfi-qB-8g8"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -258,12 +264,20 @@
                             <constraint firstItem="RkD-WP-PhB" firstAttribute="top" secondItem="Ihb-6S-3Jg" secondAttribute="bottom" constant="20" id="Slp-xi-68e"/>
                             <constraint firstItem="OsE-wT-CXF" firstAttribute="leading" secondItem="KiE-9p-uN9" secondAttribute="leadingMargin" constant="20" id="V23-rn-R56"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OsE-wT-CXF" secondAttribute="trailing" constant="20" id="aR6-FI-fMt"/>
+                            <constraint firstItem="Ihb-6S-3Jg" firstAttribute="leading" secondItem="KiE-9p-uN9" secondAttribute="leadingMargin" id="bYR-oO-XJS"/>
                             <constraint firstItem="Ihb-6S-3Jg" firstAttribute="centerX" secondItem="KiE-9p-uN9" secondAttribute="centerX" id="jYm-OM-Sjs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ihb-6S-3Jg" secondAttribute="trailing" id="log-xA-bkh"/>
                             <constraint firstItem="DfC-2G-GzC" firstAttribute="top" secondItem="daG-LQ-fOl" secondAttribute="bottom" constant="20" id="o1s-Kv-wlM"/>
                             <constraint firstItem="OsE-wT-CXF" firstAttribute="centerX" secondItem="KiE-9p-uN9" secondAttribute="centerX" id="oz2-xt-q0U"/>
                             <constraint firstItem="OsE-wT-CXF" firstAttribute="top" secondItem="RkD-WP-PhB" secondAttribute="bottom" constant="20" id="pr5-Ci-jBu"/>
                             <constraint firstItem="Ihb-6S-3Jg" firstAttribute="top" secondItem="8p2-Nq-Yhg" secondAttribute="bottom" constant="92" id="uXz-xu-nwj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bYR-oO-XJS"/>
+                                <exclude reference="log-xA-bkh"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Ihb-6S-3Jg" id="0gs-LE-hXy"/>
@@ -288,12 +302,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-H0-Wh9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="index.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vRP-H0-Wh9">
                                 <rect key="frame" x="172" y="115" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="0ek-NE-uS9"/>
                                     <constraint firstAttribute="width" constant="240" id="odd-Bh-y5U"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="odd-Bh-y5U"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0K-3P-QN5">
                                 <rect key="frame" x="276" y="530" width="48" height="30"/>
@@ -321,10 +340,13 @@
                         <constraints>
                             <constraint firstItem="vRP-H0-Wh9" firstAttribute="top" secondItem="Pux-oe-Uor" secondAttribute="bottom" constant="30" id="2xY-1r-boB"/>
                             <constraint firstItem="i0K-3P-QN5" firstAttribute="top" secondItem="Cji-OA-wE3" secondAttribute="bottom" constant="40" id="Aqa-49-x94"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vRP-H0-Wh9" secondAttribute="trailing" id="Ef9-ls-9HG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="J9l-6p-Aht" secondAttribute="trailing" id="acV-s8-awB"/>
                             <constraint firstItem="4Ua-FK-Gym" firstAttribute="top" secondItem="i0K-3P-QN5" secondAttribute="bottom" constant="40" id="b1x-lY-s4U"/>
+                            <constraint firstItem="vRP-H0-Wh9" firstAttribute="leading" secondItem="7dY-ue-hHI" secondAttribute="leadingMargin" id="eQN-sI-R4J"/>
                             <constraint firstItem="i0K-3P-QN5" firstAttribute="centerX" secondItem="7dY-ue-hHI" secondAttribute="centerX" id="kiQ-td-Lxj"/>
                             <constraint firstItem="4Ua-FK-Gym" firstAttribute="top" secondItem="J9l-6p-Aht" secondAttribute="bottom" constant="20" id="rab-Xd-n1j"/>
+                            <constraint firstItem="vRP-H0-Wh9" firstAttribute="centerX" secondItem="7dY-ue-hHI" secondAttribute="centerX" id="uWQ-em-yIe"/>
                             <constraint firstItem="Cji-OA-wE3" firstAttribute="centerX" secondItem="7dY-ue-hHI" secondAttribute="centerX" id="z27-bZ-Vyb"/>
                         </constraints>
                     </view>
@@ -335,8 +357,11 @@
             <point key="canvasLocation" x="364" y="373"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="index.jpg" width="1200" height="630"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="KlY-nx-uMa"/>
-        <segue reference="nvv-JV-VHY"/>
+        <segue reference="XTq-La-9wo"/>
     </inferredMetricsTieBreakers>
 </document>

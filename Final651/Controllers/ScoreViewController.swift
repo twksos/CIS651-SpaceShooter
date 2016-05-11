@@ -29,7 +29,7 @@ class ScoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cellIdentifier = "ScoreTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ScoreTableViewCell
         
-        // Configure the cell...
+        // configure the cell
         let score = scores[indexPath.row]
         cell.scoreLabel.text = String(score.score)
         
