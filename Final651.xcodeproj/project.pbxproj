@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1A38981CE37E350045B902 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C92AED11CE2DEF9000EF643 /* db.sqlite3 */; };
 		9C92AE771CDFC527000EF643 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92AE761CDFC527000EF643 /* AppDelegate.swift */; };
 		9C92AE791CDFC527000EF643 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9C92AE781CDFC527000EF643 /* GameScene.sks */; };
 		9C92AE7B1CDFC527000EF643 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92AE7A1CDFC527000EF643 /* GameScene.swift */; };
@@ -25,6 +26,8 @@
 		9C92AECD1CE1A0A0000EF643 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C92AECB1CE1A0A0000EF643 /* SQLite.framework */; };
 		9C92AECE1CE1A0A0000EF643 /* SQLite.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 9C92AECC1CE1A0A0000EF643 /* SQLite.framework.dSYM */; };
 		9C92AED01CE1A0D5000EF643 /* SQLite.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9C92AECC1CE1A0A0000EF643 /* SQLite.framework.dSYM */; };
+		9C92AED31CE2E414000EF643 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C92AECB1CE1A0A0000EF643 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C92AED61CE2F395000EF643 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C92AED51CE2F395000EF643 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +39,17 @@
 			files = (
 				9C92AED01CE1A0D5000EF643 /* SQLite.framework.dSYM in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C92AED41CE2E415000EF643 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9C92AED31CE2E414000EF643 /* SQLite.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -61,6 +75,7 @@
 		9C92AECB1CE1A0A0000EF643 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		9C92AECC1CE1A0A0000EF643 /* SQLite.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SQLite.framework.dSYM; path = Carthage/Build/iOS/SQLite.framework.dSYM; sourceTree = "<group>"; };
 		9C92AED11CE2DEF9000EF643 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite3; sourceTree = "<group>"; };
+		9C92AED51CE2F395000EF643 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +150,7 @@
 		9C92AEC11CE042C1000EF643 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9C92AED51CE2F395000EF643 /* Location.swift */,
 				9C92AEC21CE042F3000EF643 /* Score.swift */,
 			);
 			name = Models;
@@ -160,6 +176,7 @@
 				9C92AE701CDFC526000EF643 /* Frameworks */,
 				9C92AE711CDFC526000EF643 /* Resources */,
 				9C92AECF1CE1A0B4000EF643 /* CopyFiles */,
+				9C92AED41CE2E415000EF643 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1A38981CE37E350045B902 /* db.sqlite3 in Resources */,
 				9C92AE791CDFC527000EF643 /* GameScene.sks in Resources */,
 				9C92AE851CDFC527000EF643 /* LaunchScreen.storyboard in Resources */,
 				9C92AECE1CE1A0A0000EF643 /* SQLite.framework.dSYM in Resources */,
@@ -226,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C92AEC71CE06386000EF643 /* ScoreTableViewCell.swift in Sources */,
+				9C92AED61CE2F395000EF643 /* Location.swift in Sources */,
 				9C92AE7B1CDFC527000EF643 /* GameScene.swift in Sources */,
 				9C92AEB61CE03427000EF643 /* GameViewController.swift in Sources */,
 				9C92AEBB1CE034CB000EF643 /* ResultViewController.swift in Sources */,

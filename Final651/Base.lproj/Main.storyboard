@@ -51,7 +51,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="qFA-V0-c6K" customClass="ScoreTableViewCell" customModule="Final651" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="560" height="90"/>
+                                        <rect key="frame" x="0.0" y="28" width="560" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFA-V0-c6K" id="D8A-yG-hLz">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="89.5"/>
@@ -115,7 +115,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserScoreTableViewCell" rowHeight="90" id="vNf-eL-49m" customClass="UserScoreTableViewCell" customModule="Final651" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vNf-eL-49m" id="rAx-L4-AYX">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
@@ -228,13 +228,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daG-LQ-fOl">
-                                <rect key="frame" x="300" y="432" width="37" height="30"/>
-                                <state key="normal" title="Retry"/>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="fWb-PL-0o6"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfC-2G-GzC">
                                 <rect key="frame" x="301" y="481" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
@@ -248,6 +241,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daG-LQ-fOl">
+                                <rect key="frame" x="300" y="432" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="sendEmailButtonTapped:" destination="RfI-ed-LG1" eventType="touchUpInside" id="TVA-b9-7xn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -265,6 +265,12 @@
                             <constraint firstItem="Ihb-6S-3Jg" firstAttribute="top" secondItem="8p2-Nq-Yhg" secondAttribute="bottom" constant="92" id="uXz-xu-nwj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="Ihb-6S-3Jg" id="0gs-LE-hXy"/>
+                        <outlet property="retryOrNextLabel" destination="daG-LQ-fOl" id="DKV-is-mSE"/>
+                        <outlet property="scoreLabel" destination="OsE-wT-CXF" id="b2l-nY-HuS"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="RetryOrNextLevel" id="nvv-JV-VHY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cda-tU-9Hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,6 +302,13 @@
                                     <segue destination="9AB-gk-kQE" kind="show" id="9zC-YD-Hy1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9l-6p-Aht">
+                                <rect key="frame" x="523" y="530" width="68" height="30"/>
+                                <state key="normal" title="Feedback"/>
+                                <connections>
+                                    <action selector="sendEmailButtonTapped:" destination="ynP-Lp-k0H" eventType="touchUpInside" id="rNP-7c-RY7"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cji-OA-wE3">
                                 <rect key="frame" x="283" y="460" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
@@ -308,8 +321,10 @@
                         <constraints>
                             <constraint firstItem="vRP-H0-Wh9" firstAttribute="top" secondItem="Pux-oe-Uor" secondAttribute="bottom" constant="30" id="2xY-1r-boB"/>
                             <constraint firstItem="i0K-3P-QN5" firstAttribute="top" secondItem="Cji-OA-wE3" secondAttribute="bottom" constant="40" id="Aqa-49-x94"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J9l-6p-Aht" secondAttribute="trailing" id="acV-s8-awB"/>
                             <constraint firstItem="4Ua-FK-Gym" firstAttribute="top" secondItem="i0K-3P-QN5" secondAttribute="bottom" constant="40" id="b1x-lY-s4U"/>
                             <constraint firstItem="i0K-3P-QN5" firstAttribute="centerX" secondItem="7dY-ue-hHI" secondAttribute="centerX" id="kiQ-td-Lxj"/>
+                            <constraint firstItem="4Ua-FK-Gym" firstAttribute="top" secondItem="J9l-6p-Aht" secondAttribute="bottom" constant="20" id="rab-Xd-n1j"/>
                             <constraint firstItem="Cji-OA-wE3" firstAttribute="centerX" secondItem="7dY-ue-hHI" secondAttribute="centerX" id="z27-bZ-Vyb"/>
                         </constraints>
                     </view>
@@ -321,7 +336,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fWb-PL-0o6"/>
-        <segue reference="rb5-Ck-k5S"/>
+        <segue reference="KlY-nx-uMa"/>
+        <segue reference="nvv-JV-VHY"/>
     </inferredMetricsTieBreakers>
 </document>

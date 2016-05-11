@@ -12,10 +12,29 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    func copyFile()
+    {
+        let dirPaths =  NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)
+        let docsDir = dirPaths[0] 
 
+        let destPath = (docsDir as NSString).stringByAppendingPathComponent("/db.sqlite3")
+        
+        let fileMgr = NSFileManager.defaultManager()
+        
+        if let path = NSBundle.mainBundle().pathForResource("db", ofType:"sqlite3") {
+            print(path)
+            do {
+                try fileMgr.copyItemAtPath(path, toPath: destPath)
+                print("COPY success")
+            } catch {
+                print("COPY failed, it's already there")
+            }
+        }
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        copyFile()
         return true
     }
 

@@ -10,7 +10,9 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
-
+    var level = 1
+    var score = 0
+    var win = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +34,10 @@ class GameViewController: UIViewController {
         }
     }
     
-    func result() {
-        performSegueWithIdentifier("GameResult", sender: nil)
+    func result(score:Int, win:Bool) {
+        self.score = score
+        self.win = win
+        performSegueWithIdentifier("GameResult", sender: self)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,5 +63,15 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GameResult") {
+            // pass data to next view
+            let svc = segue.destinationViewController as! ResultViewController;
+            
+            svc.score = score
+            svc.win = win
+        }
     }
 }

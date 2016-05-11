@@ -10,9 +10,21 @@ import UIKit
 import Foundation
 
 class ResultViewController: UIViewController {
+    var score = 0
+    var win = false
     
+    @IBOutlet weak var retryOrNextLabel: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        Score.saveScore(score)
+        scoreLabel.text = "\(score)(High Score: \(Score.heighestScore()))"
+        if(win) { retryOrNextLabel.setTitle("Next Level", forState: UIControlState.Normal) }
+        else { retryOrNextLabel.setTitle("Retry", forState: UIControlState.Normal) }
     }
     
     override func shouldAutorotate() -> Bool {
@@ -34,5 +46,19 @@ class ResultViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    @IBAction func sendEmailButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("RetryOrNextLevel", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "RetryOrNextLevel") {
+            // pass data to next view
+            let svc = segue.destinationViewController as! GameViewController;
+            svc.level += 1
+            svc.score = score
+            svc.win = false
+        }
     }
 }
